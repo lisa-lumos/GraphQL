@@ -21,4 +21,5 @@ This tutorial uses JS for both the server and the client. But you could have a s
 GraphQL started as an internal project in 2012, then was released as open source in 2015. The main reason why Facebook started developing a new way to build APIs, is that they wanted to speed up their mobile apps, that were too slow, because they were making too many calls to the server. 
 
 ## Required Tools
-
+- recent LTS version of Node.js
+- ESLint in VS Code
