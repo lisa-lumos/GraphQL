@@ -1,0 +1,50 @@
+# 2. Fundamentals
+## Schema definition
+Will build a GraphQL server, and write a webpage that calls that API, and displays the data. 
+
+Create a project folder, inside, create a "server" folder, with "server.js" inside. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
