@@ -1,3 +1,6 @@
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+
 // define its schema 
 // typeDefs is short for type definitions
 // Inside it, uss the "Schema Definition Language"
@@ -26,6 +29,32 @@ const typeDefs = `
 const resolvers = {
   Query: {
     greeting: () => 'Hello world!',
-  }
+  },
 };
+
+const server = new ApolloServer({ typeDefs, resolvers });
+// The above uses the short hand,
+// the original form is: 
+// const server = new ApolloServer({ typeDefs: typeDefs, resolvers: resolvers })
+
+// hovering over this function, 
+// the editor shows that this function returns a "promise",
+// which means it is asynchronous. 
+// To wait for the async operation to complete, 
+// need to use the "await" keyword
+const { url } = await startStandaloneServer(server, { listen: { port: 9000 } });
+// this url is from object destructuring
+console.log(`Server running at ${url}`);
+
+
+
+
+
+
+
+
+
+
+
+
 
