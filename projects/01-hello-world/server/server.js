@@ -17,6 +17,18 @@ const typeDefs = `
   }
 `;
 
+// const typeDefs = `
+//   # this is a comment
+
+//   schema { # this is optional, because it is default. 
+//     query: Query
+//   }
+
+//   type Query {
+//     greeting: String
+//   }
+// `;
+
 // the code that actually returns a "greeting" value
 // This object must follow the same structure as the schema
 // the value of "greeting" is a function,

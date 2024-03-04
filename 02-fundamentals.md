@@ -20,6 +20,17 @@ const typeDefs = `
   }
 `;
 
+// const typeDefs = `
+//   # this is a comment
+//   schema { # this is optional, because it is default. 
+//     query: Query
+//   }
+
+//   type Query {
+//     greeting: String
+//   }
+// `;
+
 // the code that actually returns a "greeting" value
 // This object must follow the same structure as the schema
 // the value of "greeting" is a function,
@@ -95,7 +106,44 @@ Server running at http://localhost:9000/
 
 ```
 
+## Query Language
+Go to browser and go to the url `http://localhost:9000/`, will see the Apollo Sandbox. 
 
+This tool is a web-based client, that can be used to make GraphQL queries. It is enabled by default when Apollo Server was run in development. 
+
+On the Documentation page, the schema of the API is displayed, in this case it is `greeting: String`. 
+
+Create a query body. Press Control + Space, will display a set of suggestions. 
+```
+query {
+  greeting
+}
+```
+Next, press the Run button, and will get the JSON response:
+```json
+{
+  "data": {
+    "greeting": "Hello world!"
+  }
+}
+```
+
+The reason that the "greeting" is nested under "data", is because the response can contain other things, such as when you input the wrong field name in the request, the response will have "errors" filed, at the same level with "data". 
+
+Note that in the request, the "query" is optional, so the request body becomes:
+```
+{
+  greeting
+}
+```
+
+## GraphQL Over HTTP
+
+## GraphQL Client
+
+## Github Repository
+
+## Code-First vs Schema-First
 
 
 
