@@ -137,14 +137,58 @@ Note that in the request, the "query" is optional, so the request body becomes:
 }
 ```
 
+In summary, this the QL (query language) in GraphQL. 
+
 ## GraphQL Over HTTP
+How does the client (Apollo Sandbox) communicate with the server? 
+
+Since we are using GraphQL over HTTP, we can open the Chrome Developer Tools and inspect the HTTP requests. 
+
+Under the Network pane, can see it makes a new request every second. This is because by default, the Sandbox has "Schema polling" enabled, so it keeps requesting the schema from the server, to make sure it uses the latest version. It is good for development, but not helpful when we need to inspect the requests. So turn it off, by clicking the green dot. 
+
+In the Network pane, clear the log using the 2nd button to from left. 
+
+Select the "Fetch/XHR", so that it will only show server calls made from JavaScript, not from other requests like CSS files or images, etc. Also, in the filter box below the "clear" button, enter "localhost". So it will only show requests sent to the local GraphQL server. 
+
+Now, click the "Run" button in the webpage, to post a request. In the developer console, we can then see the HTTP request made, to sent the GraphQL query. Double click it to expand it, and see the Headers tab:
+```
+Request URL:     http://localhost:9000/
+Request Method:  POST
+Status Code:     200 OK
+Remote Address:  [::1]:9000
+```
+
+We can see that the method is "POST". By default, all GraphQL requests are sent as HTTP POST. This is different from a REST API, where to get some data, you typically use the GET method. 
+
+If we look at the "Request Headers":
+```
+Content-Type: application/json
+```
+
+Now, click on the "Payload" tab, see
+```
+{"query":"query {\n  greeting\n}\n","variables":{}}
+```
+
+This shows that the client sent a JSON object, containing our query string. 
+
+Under the "Headers" pane, under the "Response Headers" section, can see the response is also a JSON:
+```
+Content-Type: application/json; charset=utf-8
+```
+
+And under the "Response" tab:
+```
+{"data":{"greeting":"Hello world!"}}
+```
+
+Inspecting the Network requests in the DevTools can be very useful. If you have an issue, like some data is not showing up in the page, you can check if the HTTP request was successful from here. 
 
 ## GraphQL Client
 
 ## Github Repository
 
 ## Code-First vs Schema-First
-
 
 
 
