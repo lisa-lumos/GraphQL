@@ -185,6 +185,76 @@ And under the "Response" tab:
 Inspecting the Network requests in the DevTools can be very useful. If you have an issue, like some data is not showing up in the page, you can check if the HTTP request was successful from here. 
 
 ## GraphQL Client
+In the project folder, create a "client" folder.
+
+Create a file "index.html":
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GraphQL Client</title>
+</head>
+<body>
+  <h1>GraphQL Client</h1>
+  <p>
+    The server says: 
+    <strong id="api-response">
+      Loading...
+    </strong>
+  </p>
+  <script src="app.js"></script>
+</body>
+</html>
+```
+
+with a file "app.js" inside:
+```js
+// use await, because the fetch function returns a
+// "Promise of a Response",
+// so also need to declare the fetchGreeting() function
+// as async
+async function fetchGreeting() {
+  // This fetch api is available globally,
+  // in any modern browser
+  const response = await fetch(
+    'http://localhost:9000/', 
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ // convert js obj to string
+        query: 'query { greeting }'
+      })
+    }
+  );
+
+  const responseObj = await response.json(); // convert the response to an object, then destructure it
+  const {data} = responseObj;
+  // console.log(`response: ${responseObj}`); // this will only show it is an object, will not print its content
+  console.log('response: ', responseObj);
+  return data.greeting;
+}
+
+fetchGreeting().then((responseValue) => {
+  document.getElementById('api-response').textContent = responseValue;
+});
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Github Repository
 
