@@ -243,50 +243,13 @@ fetchGreeting().then((responseValue) => {
 });
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Github Repository
+Refresh webpage in the browser, should see api response. 
 
 ## Code-First vs Schema-First
+This choice is about how you implement your GraphQL server, it doesn't affect the clients. 
 
+The prev example follows the "schema-first" approach. The schema was defined first, then the implementation (resolvers) was written separately. 
 
+GraphQL Nexus is one of the "code-first" frameworks available for JavaScript and TypeScript. With this approach, everything is written as JS code, and the resolver function sits alongside the field definition. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The Schema-first approach provides a cleaner syntax. It is easier to read. It also allow you to split a large schema, like using the "extend" keyword. The schema definition language is part of the GraphQL specification, it is what is used in all the documentation. 
