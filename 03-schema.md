@@ -17,7 +17,18 @@ Architecture:
 - Authentication. Use JSON Web Tokens. 
 
 ## Job Board Project
+```shell
+# navigate to the "job-board/server" folder
+npm install
+npm start
 
+# navigate to the "job-board/client" folder
+npm install
+npm start
+
+```
+
+The front end is just some hard-coded fake data. Our task will be to make it to fetch data from the GraphQL API. 
 
 ## Apollo Server with Express
 
